@@ -10,6 +10,7 @@ void initClus(CLUSTER_ENTRY*);
 void loadData(char *, char **, int, uint64_t);
 void calcFATEntry(BPB *, METADATA *, CLUSTER_ENTRY *);
 void fetchClusterEntry(int, char *, CLUSTER_ENTRY *);
+//void setContentsOfCluster(int, AUX*);
 
 struct CLUSTER_ENTRY
 {

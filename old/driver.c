@@ -82,61 +82,8 @@ void main(){
 }
 
 
-/*
-void setContentsOfCluster(int N, AUX* AUX){
-
-    /// sets the contents of a cluser N
-
-    if (AUX -> FATType == 12){          // FAT12
-        if (N & 0x0001){
-            AUX -> FAT12ClusEntryVal = AUX -> FAT12ClusEntryVal << 4;       // cluster number is ODD
-            *((WORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset]) = (*((WORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset])) & 0x000F;
-        
-        } else{
-            AUX -> FAT12ClusEntryVal = AUX -> FAT12ClusEntryVal & 0x0FFF;   // cluster number is EVEN
-            *((WORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset]) = (*((WORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset])) | AUX -> FAT12ClusEntryVal;
-        }
-
-        *((WORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset]) = (* ((WORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset])) | AUX -> FAT12ClusEntryVal;
-    }
-
-    if (AUX -> FATType == 16 )          // FAT16
-        *((WORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset]) = AUX -> FAT16ClusEntryVal;
-    
-    else{                               // FAT32
-        AUX -> FAT32ClusEntryVal = AUX -> FAT32ClusEntryVal & 0x0FFFFFFF;
-        *((DWORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset]) = (*((DWORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset])) & 0x0FFFFFFF;
-        *((DWORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset]) = (*((DWORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset])) | AUX -> FAT32ClusEntryVal;
-    }
-}
-
-*/
 
 /*
-void initFAT(AUX* AUX, BPB* BPB){
-
-    /// initialises a new fat
-
-    AUX -> RootDirSectors = ((BPB -> BPB_RootEntCnt * 32) + (BPB -> BPB_BytsPerSec - 1)) / BPB -> BPB_BytsPerSec;
-    DWORD TmpVal1 = AUX -> DskSize - (BPB -> BPB_ResvdSecCnt + AUX -> RootDirSectors);
-    DWORD TmpVal2 = (256 * BPB -> BPB_SecPerClus) + BPB -> BPB_NumFATs;
-
-    if(AUX -> FATType == 32)
-        TmpVal2 = TmpVal2 / 2;
-    
-    AUX -> FATSz = (TmpVal1 + (TmpVal2 - 1)) / TmpVal2;
-
-    if (AUX -> FATType == 32){
-        BPB -> BPB_FATSz16 = 0;
-        BPB -> BPB_FATSz32 = AUX -> FATSz;
-
-    } else {
-        BPB -> BPB_FATSz16 = LOWORD(AUX -> FATSz);
-        // no BPB_FATSz32 in FAT16 BPB
-    }
-}
-
-
 
 uint64_t FirstSectorOfCluster(CLUSTER_ENTRY* entry, METADATA* meta){
 

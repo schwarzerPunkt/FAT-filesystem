@@ -5,21 +5,10 @@
 #ifndef FAT_H
 #define FAT_H
 
-//typedef struct AUX AUX;
-
 typedef struct DSKSZTOSECPERCLUS DSKSZTOSECPERCLUS;
 typedef struct FSInfo FSInfo;
 
-//void setContentsOfCluster(int, AUX*);
-//void initFAT(AUX*, BPB*);
 //uint64_t calcFirstSectorOfCluster(CLUSTER_ENTRY*, METADATA*);
-
-/*struct AUX{
-    char* SecBuff;                      // size BPB_BytsPerSec or 2 * BPB_BytsPerSec (FAT12)
-    char* image;                             
-    DWORD DskSize;
-
-};*/
 
 struct DSKSZTOSECPERCLUS {
     DWORD DiskSize;

@@ -98,3 +98,33 @@ void fetchClusterEntry(int FATType, char* SecBuff, CLUSTER_ENTRY* clus){
     else                                // FAT32
         clus -> FAT32ClusEntryVal = (*((DWORD *) &SecBuff[clus -> ThisFATEntOffset])) & 0x0FFFFFFF;
 }
+
+/*
+void setContentsOfCluster(int N, AUX* AUX){
+
+    /// sets the contents of a cluser N
+
+    if (AUX -> FATType == 12){          // FAT12
+        if (N & 0x0001){
+            AUX -> FAT12ClusEntryVal = AUX -> FAT12ClusEntryVal << 4;       // cluster number is ODD
+            *((WORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset]) = (*((WORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset])) & 0x000F;
+        
+        } else{
+            AUX -> FAT12ClusEntryVal = AUX -> FAT12ClusEntryVal & 0x0FFF;   // cluster number is EVEN
+            *((WORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset]) = (*((WORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset])) | AUX -> FAT12ClusEntryVal;
+        }
+
+        *((WORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset]) = (* ((WORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset])) | AUX -> FAT12ClusEntryVal;
+    }
+
+    if (AUX -> FATType == 16 )          // FAT16
+        *((WORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset]) = AUX -> FAT16ClusEntryVal;
+    
+    else{                               // FAT32
+        AUX -> FAT32ClusEntryVal = AUX -> FAT32ClusEntryVal & 0x0FFFFFFF;
+        *((DWORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset]) = (*((DWORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset])) & 0x0FFFFFFF;
+        *((DWORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset]) = (*((DWORD *) AUX -> SecBuff[AUX -> ThisFATEntOffset])) | AUX -> FAT32ClusEntryVal;
+    }
+}
+
+*/

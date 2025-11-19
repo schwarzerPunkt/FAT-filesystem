@@ -1,0 +1,1 @@
+//void initFAT(AUX*, BPB*);

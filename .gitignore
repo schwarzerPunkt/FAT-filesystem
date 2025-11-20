@@ -17,3 +17,9 @@
 build/
 specification/
 web/
+
+# design folder
+design/
+
+# other
+old/

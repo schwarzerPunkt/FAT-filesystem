@@ -13,7 +13,7 @@ typedef enum {
 } fat_type_t;
 
 // represent cluster numbers
-typedef uint32_t cluster_t
+typedef uint32_t cluster_t;
 
 // FAT Entry markers: 0x0000 means cluster is available for allocation
 #define FAT_FREE 0x0000
@@ -48,7 +48,7 @@ typedef uint32_t cluster_t
 // Error codes: standardized return values for all driver functions
 
 typedef enum {
-    FAT_OK = 0,         // success code
+    FAT_OK = 0,                     // success code
 
     // parameter validation errors
     FAT_ERR_INVALID_PARAM,          // Null pointer or invalid argument
